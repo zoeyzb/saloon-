@@ -1,99 +1,115 @@
-import { useEffect, useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-
-function PaintSignal({ onPaint }) {
-  const sent = useRef(false)
-  const { invalidate } = useThree()
-
-  useEffect(() => {
-    invalidate()
-  }, [invalidate])
-
-  useFrame(() => {
-    if (sent.current) return
-    sent.current = true
-    requestAnimationFrame(onPaint)
-  })
-
-  return null
-}
+import { useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { ContactShadows, Float, RoundedBox } from '@react-three/drei'
+import * as THREE from 'three'
 
 function ProductAtelier() {
   const group = useRef()
-  const { invalidate } = useThree()
+  const target = useRef({ x: 0, y: 0 })
 
-  const move = (event) => {
+  useFrame((state, delta) => {
     if (!group.current) return
-    group.current.rotation.y = event.pointer.x * .24
-    group.current.rotation.x = -event.pointer.y * .08
-    invalidate()
+    const ease = 1 - Math.pow(0.001, delta)
+    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, target.current.x, ease)
+    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, target.current.y, ease)
+    group.current.position.y = Math.sin(state.clock.elapsedTime * .45) * .025
+  })
+
+  const onMove = (event) => {
+    target.current.x = event.pointer.x * .18
+    target.current.y = -event.pointer.y * .06
   }
 
   const reset = () => {
-    if (!group.current) return
-    group.current.rotation.set(0,0,0)
-    invalidate()
+    target.current.x = 0
+    target.current.y = 0
   }
 
   return (
-    <group ref={group} position={[0,.05,0]} onPointerMove={move} onPointerOut={reset}>
-      <mesh position={[0,-1.45,0]} scale={[1.65,.16,1.65]}>
-        <cylinderGeometry args={[1,1,1,40]}/>
-        <meshStandardMaterial color="#2a2019" metalness={.55} roughness={.28}/>
+    <group ref={group} onPointerMove={onMove} onPointerOut={reset}>
+      <mesh position={[0, -1.42, 0]} scale={[1.62, .13, 1.62]}>
+        <cylinderGeometry args={[1, 1, 1, 72]}/>
+        <meshStandardMaterial color="#2a211c" metalness={.4} roughness={.36}/>
       </mesh>
 
-      <group position={[-.42,-.08,.12]} rotation={[0,-.12,0]}>
-        <mesh scale={[.78,1.52,.58]}>
-          <boxGeometry args={[1,1,1]}/>
-          <meshPhysicalMaterial color="#a77756" metalness={.08} roughness={.16} clearcoat={.9}/>
+      <group position={[-.5, -.22, .12]} rotation={[0, -.16, 0]}>
+        <RoundedBox args={[1.12, 2.22, .82]} radius={.14} smoothness={6}>
+          <meshPhysicalMaterial
+            color="#a86f4c"
+            metalness={.06}
+            roughness={.2}
+            clearcoat={1}
+            clearcoatRoughness={.2}
+          />
+        </RoundedBox>
+        <mesh position={[0, 1.34, 0]} scale={[.55, .34, .55]}>
+          <cylinderGeometry args={[.56, .62, 1, 48]}/>
+          <meshStandardMaterial color="#c89459" metalness={.82} roughness={.2}/>
         </mesh>
-        <mesh position={[0,.98,0]} scale={[.42,.4,.42]}>
-          <cylinderGeometry args={[.55,.62,1,24]}/>
-          <meshStandardMaterial color="#e0bf91" metalness={.9} roughness={.14}/>
+        <mesh position={[0, .18, .42]}>
+          <planeGeometry args={[.62, .7]}/>
+          <meshBasicMaterial color="#1a1410" transparent opacity={.9}/>
         </mesh>
       </group>
 
-      <group position={[.82,-.42,.2]} rotation={[0,.25,0]}>
-        <mesh scale={[.56,1.02,.56]}>
-          <cylinderGeometry args={[.72,.8,1.8,28]}/>
-          <meshPhysicalMaterial color="#ead8bf" metalness={.05} roughness={.22} clearcoat={.8}/>
+      <group position={[.72, -.36, .18]} rotation={[0, .14, 0]}>
+        <mesh scale={[.64, 1.18, .64]}>
+          <cylinderGeometry args={[.72, .8, 1.8, 64]}/>
+          <meshPhysicalMaterial
+            color="#e7d6bd"
+            metalness={.03}
+            roughness={.24}
+            clearcoat={.85}
+            clearcoatRoughness={.26}
+          />
         </mesh>
-        <mesh position={[0,1.02,0]} scale={[.36,.28,.36]}>
-          <cylinderGeometry args={[.7,.7,1,24]}/>
-          <meshStandardMaterial color="#9f7453" metalness={.78} roughness={.16}/>
+        <mesh position={[0, 1.28, 0]} scale={[.45, .28, .45]}>
+          <cylinderGeometry args={[.7, .7, 1, 48]}/>
+          <meshStandardMaterial color="#8f5f3f" metalness={.7} roughness={.2}/>
         </mesh>
       </group>
 
-      <mesh rotation={[1.22,.15,.42]} scale={2.3}>
-        <torusGeometry args={[.78,.014,8,72]}/>
-        <meshBasicMaterial color="#e0bf91" transparent opacity={.9}/>
-      </mesh>
+      <Float speed={1.2} rotationIntensity={.22} floatIntensity={.35}>
+        <mesh position={[1.45, .78, -.28]} scale={.28}>
+          <sphereGeometry args={[1, 48, 48]}/>
+          <meshPhysicalMaterial
+            color="#5b3b2b"
+            metalness={.65}
+            roughness={.15}
+            clearcoat={1}
+          />
+        </mesh>
+      </Float>
 
-      <mesh position={[1.52,.82,-.42]} scale={.26}>
-        <sphereGeometry args={[1,20,20]}/>
-        <meshStandardMaterial color="#fff3e5" metalness={.9} roughness={.1}/>
+      <mesh rotation={[1.16, .08, .38]} scale={2.12}>
+        <torusGeometry args={[.82, .012, 16, 120]}/>
+        <meshBasicMaterial color="#d8b47f" transparent opacity={.78}/>
       </mesh>
     </group>
   )
 }
 
 export default function SalonScene() {
-  const [painted, setPainted] = useState(false)
-
   return (
-    <div className={`salon-scene-wrap ${painted ? 'salon-scene-wrap--painted' : ''}`}>
+    <div className="salon-scene-wrap">
       <Canvas
-        dpr={1}
-        frameloop="demand"
-        camera={{position:[0,0,5.4],fov:38}}
-        gl={{antialias:true,alpha:true,powerPreference:'high-performance'}}
+        dpr={[1, 1.5]}
+        camera={{ position: [0, .05, 5.25], fov: 35 }}
+        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
       >
-        <ambientLight intensity={.9}/>
-        <directionalLight position={[3,5,5]} intensity={4.2} color="#fff0db"/>
-        <directionalLight position={[-4,1,2]} intensity={1.8} color="#b47d57"/>
-        <pointLight position={[0,-1,3]} intensity={1.2} color="#d6b78d"/>
+        <ambientLight intensity={1.25}/>
+        <directionalLight position={[3.5, 5, 4]} intensity={4.5} color="#ffe9cf"/>
+        <directionalLight position={[-4, .8, 2]} intensity={2.1} color="#9a644a"/>
+        <pointLight position={[0, -1, 3]} intensity={1.4} color="#d6b78d"/>
         <ProductAtelier/>
-        <PaintSignal onPaint={() => setPainted(true)}/>
+        <ContactShadows
+          position={[0, -1.48, 0]}
+          opacity={.44}
+          scale={5}
+          blur={2.8}
+          far={3}
+          frames={1}
+        />
       </Canvas>
     </div>
   )
