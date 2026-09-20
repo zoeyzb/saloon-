@@ -16,7 +16,7 @@ export default function ServicesSection() {
         {services.map(service => (
           <article className="service-card" key={service.id}>
             <div className="service-media">
-              <img src={service.image} alt={service.title} loading="lazy"/>
+              <img src={service.image} alt={service.title} loading="lazy" decoding="async"/>
               <span>{service.id}</span>
             </div>
             <div className="service-meta">
