@@ -2,25 +2,31 @@ import SalonScene from '../components/three/SalonScene'
 
 export default function ExperienceSection() {
   return (
-    <section id="about" className="experience">
-      <div className="atelier-fallback" aria-hidden="true">
-        <i className="atelier-pedestal"/>
-        <i className="atelier-bottle atelier-bottle--a"/>
-        <i className="atelier-bottle atelier-bottle--b"/>
-        <i className="atelier-ring"/>
+    <section id="about" className="experience section-pad">
+      <div className="experience-shell">
+        <div className="experience-copy-block" data-reveal>
+          <span className="eyebrow">The Kariné ritual</span>
+          <h2>BEAUTY,<br/><em>CONSIDERED.</em></h2>
+          <p>Luxury should feel intentional, not loud. Explore the objects — every movement is rendered in real time.</p>
+          <div className="experience-meta">
+            <span><b>01</b> Sculpted care</span>
+            <span><b>02</b> Warm materials</span>
+            <span><b>03</b> Quiet precision</span>
+          </div>
+        </div>
+
+        <div className="experience-stage" data-reveal>
+          <div className="experience-stage__label">
+            <span>Interactive atelier</span>
+            <span>Move your cursor</span>
+          </div>
+          <SalonScene/>
+          <div className="experience-stage__caption">
+            <small>01 / OBJECT STUDY</small>
+            <p>Hover to shift the composition.</p>
+          </div>
+        </div>
       </div>
-      <div className="experience-canvas"><SalonScene/></div>
-      <div className="experience-spotlight"/>
-      <div className="experience-title">
-        <span>BEAUTY</span>
-        <em>IN MOTION.</em>
-      </div>
-      <div className="product-note">
-        <span>01 / KARINĒ ATELIER</span>
-        <strong>Ritual objects</strong>
-        <p>Move across the objects. The scene redraws only when you interact.</p>
-      </div>
-      <p className="experience-copy">A tactile salon experience built around confidence, craft and the quiet ritual of being looked after.</p>
     </section>
   )
 }

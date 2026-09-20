@@ -1,16 +1,17 @@
-import { ArrowDownRight, Play } from 'lucide-react'
+import { ArrowDownRight, Play, Sparkles } from 'lucide-react'
+import { motion } from 'motion/react'
 
 export default function HeroSection() {
   return (
     <section id="top" className="hero">
-      <div className="hero-bg">
+      <div className="hero-bg" data-parallax>
         <img
           className="hero-bg-img"
-          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=82"
           srcSet="
-            https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=640&q=76 640w,
-            https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=78 1000w,
-            https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1400&q=80 1400w
+            https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=720&q=76 720w,
+            https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80 1200w,
+            https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1800&q=82 1800w
           "
           sizes="100vw"
           fetchPriority="high"
@@ -19,33 +20,61 @@ export default function HeroSection() {
         />
       </div>
       <div className="hero-vignette" />
+      <div className="hero-grain" />
       <div className="hero-frame" />
+
       <div className="hero-copy">
-        <span className="eyebrow hero-reveal hero-reveal--1">Luxury salon & wellness</span>
-        <h1 className="hero-reveal hero-reveal--2"><span>MORE</span><span>THAN BEAUTY.</span></h1>
-        <h2 className="hero-reveal hero-reveal--3">A More Confident You.</h2>
-        <p className="hero-reveal hero-reveal--4">Expert artistry, premium care and a quieter kind of luxury — designed around the person you already are.</p>
-        <div className="hero-actions hero-reveal hero-reveal--5">
-          <a className="primary" href="#contact">Book Your Appointment <ArrowDownRight size={17}/></a>
-          <a className="secondary" href="#about"><Play size={14} fill="currentColor"/> Discover Kariné</a>
-        </div>
-        <div className="hero-trust hero-reveal hero-reveal--6">
-          <div className="avatar-stack" aria-hidden="true"><i/><i/><i/><i/></div>
-          <span>Trusted by 10,000+ happy clients</span>
-        </div>
+        <motion.span
+          className="eyebrow"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .7, delay: .05 }}
+        >
+          Luxury salon · beauty · wellness
+        </motion.span>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .9, delay: .12, ease: [0.2, 0.7, 0.2, 1] }}
+        >
+          <span>MORE THAN</span>
+          <span><em>BEAUTY.</em></span>
+        </motion.h1>
+
+        <motion.div
+          className="hero-subcopy"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .75, delay: .28 }}
+        >
+          <p>Precision artistry, private rituals and thoughtful care — built around the person already in the chair.</p>
+          <div className="hero-actions">
+            <a className="primary magnetic" href="#contact">Book appointment <ArrowDownRight size={17}/></a>
+            <a className="secondary" href="#about"><Play size={14} fill="currentColor"/> Enter the atelier</a>
+          </div>
+        </motion.div>
       </div>
-      <div className="hero-glass hero-reveal hero-reveal--5">
-        <span>Private Ritual</span>
-        <strong>Beauty, considered.</strong>
-        <p>Quiet detail. Warm light. Deliberate care.</p>
-      </div>
-      <div className="hero-stats">
-        {[
-          ['01','Expert Stylists'],
-          ['02','Premium Products'],
-          ['03','Luxury Experience'],
-          ['04','A More Confident You'],
-        ].map(([n,t]) => <div key={n}><span>{n}</span><strong>{t}</strong></div>)}
+
+      <motion.aside
+        className="hero-card"
+        initial={{ opacity: 0, x: 28 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: .8, delay: .38 }}
+      >
+        <div className="hero-card__top">
+          <span>Private appointment</span>
+          <Sparkles size={15}/>
+        </div>
+        <strong>A slower, more considered kind of beauty.</strong>
+        <p>Hair · skin · nails · bridal</p>
+        <div className="hero-card__rule"/>
+        <small>01 / KARINÉ ATELIER</small>
+      </motion.aside>
+
+      <div className="hero-rail" aria-hidden="true">
+        <span>01</span>
+        <span>Scroll to discover</span>
       </div>
     </section>
   )
