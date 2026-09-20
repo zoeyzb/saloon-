@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { CalendarDays, Menu, X } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 
 const links = ['Services','About','Pricing','Gallery','Reviews','Contact']
 
 export default function Navbar({ menuOpen, setMenuOpen }) {
   const [scrolled, setScrolled] = useState(false)
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
     onScroll()
@@ -21,14 +22,20 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
           {links.map(link => <a key={link} href={`#${link.toLowerCase()}`}>{link}</a>)}
         </nav>
         <div className="nav-actions">
-          <a className="nav-book" href="#contact"><CalendarDays size={14}/> <span>Book Appointment</span></a>
+          <a className="nav-book" href="#contact"><CalendarDays size={14}/> <span>Book appointment</span></a>
           <button className="menu-button" aria-label="Open menu" onClick={() => setMenuOpen(true)}><Menu size={20}/></button>
         </div>
       </header>
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div className="mobile-menu" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+          <motion.div
+            className="mobile-menu"
+            initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: .55, ease: [0.2, 0.7, 0.2, 1] }}
+          >
             <button aria-label="Close menu" onClick={() => setMenuOpen(false)}><X/></button>
             <div className="mobile-menu__inner">
               <span className="eyebrow">KARINĒ</span>
@@ -37,9 +44,9 @@ export default function Navbar({ menuOpen, setMenuOpen }) {
                   key={link}
                   href={`#${link.toLowerCase()}`}
                   onClick={() => setMenuOpen(false)}
-                  initial={{opacity:0,y:18}}
-                  animate={{opacity:1,y:0}}
-                  transition={{delay:i*0.05}}
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: .12 + i * .045 }}
                 >
                   {link}
                 </motion.a>
