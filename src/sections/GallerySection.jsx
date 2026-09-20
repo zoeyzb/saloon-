@@ -10,7 +10,7 @@ export default function GallerySection() {
       <div className="gallery-track">
         {gallery.map((src,i)=>(
           <figure key={src} className={`gallery-shot gallery-shot--${i+1}`}>
-            <img src={src} alt="" loading="lazy"/>
+            <img src={src} alt="" loading="lazy" decoding="async"/>
             <figcaption>{String(i+1).padStart(2,'0')} / KARINĒ</figcaption>
           </figure>
         ))}
