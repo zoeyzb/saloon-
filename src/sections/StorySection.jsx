@@ -1,7 +1,13 @@
 export default function StorySection() {
   return (
     <section className="story">
-      <div className="story-image"/>
+      <img
+        className="story-image"
+        src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1500&q=80"
+        loading="lazy"
+        decoding="async"
+        alt=""
+      />
       <div className="story-overlay"/>
       <div className="story-copy">
         <span className="eyebrow">Our philosophy</span>
