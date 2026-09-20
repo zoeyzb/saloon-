@@ -4,35 +4,35 @@ export const services = [
     title: 'Hair Care',
     copy: 'Precision cuts, dimensional colour, polished blowouts and restorative treatments.',
     detail: 'Cuts · Colour · Styling · Extensions · Treatments',
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=88',
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: '02',
     title: 'Skin Care',
     copy: 'Luminous facials, hydration rituals and advanced care tailored to your skin.',
     detail: 'Facials · Glow · Renewal · Hydration · Advanced care',
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=88',
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: '03',
     title: 'Nails',
     copy: 'Immaculate prep, elegant finishes and refined detail without the rushed appointment.',
     detail: 'Manicure · Pedicure · Gel · Nail art',
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1600&q=88',
+    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: '04',
     title: 'Bridal',
     copy: 'Hair, makeup and trial sessions shaped around the way you want to be remembered.',
     detail: 'Bridal hair · Makeup · Trials · Wedding-day care',
-    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1600&q=88',
+    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1000&q=80',
   },
   {
     id: '05',
     title: 'Wellness',
     copy: 'Restorative rituals where scalp therapy, massage and quiet care meet.',
     detail: 'Scalp therapy · Massage · Hair spa · Restorative rituals',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=88',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
   },
 ]
 
@@ -54,9 +54,9 @@ export const reviews = [
 ]
 
 export const gallery = [
-  'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1500&q=88',
-  'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1500&q=88',
-  'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1500&q=88',
-  'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1500&q=88',
-  'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1500&q=88',
+  'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1000&q=80',
+  'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1000&q=80',
+  'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1000&q=80',
+  'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80',
+  'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80',
 ]
