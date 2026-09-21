@@ -15,19 +15,18 @@ const ExperienceSection = lazy(() => import('./sections/ExperienceSection'))
 
 function AtelierFallback() {
   return (
-    <section id="about" className="experience experience--fallback">
-      <div className="experience-shell">
-        <div className="experience-copy-block">
-          <span className="eyebrow">The Kariné ritual</span>
-          <h2>OBJECTS OF<br/><em>QUIET LUXURY.</em></h2>
-          <p>Form, light and texture — distilled into a tactile digital atelier.</p>
+    <section id="about" className="atelier-x">
+      <div className="atelier-x__copy section-pad">
+        <span className="eyebrow">Karinē objects</span>
+        <h2>LIGHT.<br/>FORM.<br/><em>RITUAL.</em></h2>
+        <p>A small interactive sculpture built from the same ideas as the salon: restraint, polish and tactile contrast.</p>
+        <div className="atelier-x__legend">
+          <span>01 Chrome</span><span>02 Glass</span><span>03 Warm metal</span>
         </div>
-        <div className="atelier-fallback" aria-hidden="true">
-          <i className="atelier-pedestal"/>
-          <i className="atelier-bottle atelier-bottle--a"/>
-          <i className="atelier-bottle atelier-bottle--b"/>
-          <i className="atelier-ring"/>
-        </div>
+      </div>
+      <div className="atelier-x__scene atelier-x__scene--fallback" aria-hidden="true">
+        <i className="atelier-ring"/>
+        <i className="atelier-pedestal"/>
       </div>
     </section>
   )
@@ -47,8 +46,8 @@ function DeferredExperience() {
     if (node && observer) observer.observe(node)
 
     const idleId = 'requestIdleCallback' in window
-      ? window.requestIdleCallback(activate, { timeout: 2200 })
-      : window.setTimeout(activate, 1200)
+      ? window.requestIdleCallback(activate, { timeout: 1600 })
+      : window.setTimeout(activate, 900)
 
     return () => {
       observer?.disconnect()

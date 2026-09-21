@@ -2,30 +2,19 @@ import SalonScene from '../components/three/SalonScene'
 
 export default function ExperienceSection() {
   return (
-    <section id="about" className="experience section-pad">
-      <div className="experience-shell">
-        <div className="experience-copy-block" data-reveal>
-          <span className="eyebrow">The Kariné ritual</span>
-          <h2>BEAUTY,<br/><em>CONSIDERED.</em></h2>
-          <p>Luxury should feel intentional, not loud. Explore the objects — every movement is rendered in real time.</p>
-          <div className="experience-meta">
-            <span><b>01</b> Sculpted care</span>
-            <span><b>02</b> Warm materials</span>
-            <span><b>03</b> Quiet precision</span>
-          </div>
+    <section id="about" className="atelier-x">
+      <div className="atelier-x__copy section-pad" data-reveal>
+        <span className="eyebrow">Karinē objects</span>
+        <h2>LIGHT.<br/>FORM.<br/><em>RITUAL.</em></h2>
+        <p>A small interactive sculpture built from the same ideas as the salon: restraint, polish and tactile contrast.</p>
+        <div className="atelier-x__legend">
+          <span>01 Chrome</span><span>02 Glass</span><span>03 Warm metal</span>
         </div>
+      </div>
 
-        <div className="experience-stage" data-reveal>
-          <div className="experience-stage__label">
-            <span>Interactive atelier</span>
-            <span>Move your cursor</span>
-          </div>
-          <SalonScene/>
-          <div className="experience-stage__caption">
-            <small>01 / OBJECT STUDY</small>
-            <p>Hover to shift the composition.</p>
-          </div>
-        </div>
+      <div className="atelier-x__scene" data-reveal>
+        <div className="atelier-x__hint"><span>Interactive object study</span><span>Move cursor</span></div>
+        <SalonScene/>
       </div>
     </section>
   )
