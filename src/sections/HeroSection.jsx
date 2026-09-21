@@ -3,57 +3,67 @@ import { motion } from 'motion/react'
 
 export default function HeroSection() {
   return (
-    <section id="top" className="hero hero-v3">
-      <div className="hero-v3__media" data-parallax>
+    <section id="top" className="hero-x">
+      <div className="hero-x__grid" aria-hidden="true" />
+
+      <motion.div
+        className="hero-x__portrait"
+        initial={{ opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
+        data-parallax
+      >
         <img
-          src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1800&q=82"
+          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=84"
           srcSet="
-            https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=720&q=76 720w,
-            https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=80 1200w,
-            https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1800&q=82 1800w
+            https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=720&q=76 720w,
+            https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1100&q=80 1100w,
+            https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1500&q=84 1500w
           "
-          sizes="100vw"
+          sizes="(max-width: 800px) 100vw, 58vw"
           alt=""
           fetchPriority="high"
           decoding="async"
         />
-      </div>
-      <div className="hero-v3__veil" />
+      </motion.div>
 
-      <div className="hero-v3__content">
-        <motion.div
-          className="hero-v3__eyebrow"
-          initial={{ opacity: 0, y: 14 }}
+      <div className="hero-x__shade" />
+
+      <div className="hero-x__copy">
+        <motion.span
+          className="hero-x__kicker"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7 }}
+          transition={{ duration: .65, delay: .05 }}
         >
-          <span>KARINĒ</span>
-          <span>Luxury salon & wellness</span>
-        </motion.div>
+          KARINĒ / PRIVATE SALON
+        </motion.span>
 
         <motion.h1
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 34 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .9, delay: .08, ease: [0.22, .61, .36, 1] }}
+          transition={{ duration: .9, delay: .12, ease: [0.22, 1, 0.36, 1] }}
         >
-          BEAUTY<br/>
-          <em>WITHOUT THE NOISE.</em>
+          <span>BEAUTY,</span>
+          <em>EDITED.</em>
         </motion.h1>
 
         <motion.div
-          className="hero-v3__bottom"
+          className="hero-x__footer"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .8, delay: .22 }}
+          transition={{ duration: .75, delay: .28 }}
         >
-          <p>Private appointments for hair, skin, nails, bridal and restorative care — precise, calm and entirely considered.</p>
-          <a href="#contact" className="primary hero-v3__cta">Book an appointment <ArrowDownRight size={16}/></a>
+          <p>Hair, skin, nails and bridal care with the excess removed.</p>
+          <a href="#contact" className="hero-x__book">
+            Book a private appointment <ArrowDownRight size={16}/>
+          </a>
         </motion.div>
       </div>
 
-      <div className="hero-v3__index" aria-hidden="true">
+      <div className="hero-x__stamp" aria-hidden="true">
         <span>01</span>
-        <span>KARINĒ / 2026</span>
+        <span>Scroll</span>
       </div>
     </section>
   )
