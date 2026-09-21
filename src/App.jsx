@@ -15,19 +15,17 @@ const ExperienceSection = lazy(() => import('./sections/ExperienceSection'))
 
 function AtelierFallback() {
   return (
-    <section id="about" className="experience experience--fallback">
-      <div className="experience-shell">
-        <div className="experience-copy-block">
-          <span className="eyebrow">The Kariné ritual</span>
-          <h2>OBJECTS OF<br/><em>QUIET LUXURY.</em></h2>
-          <p>Form, light and texture — distilled into a tactile digital atelier.</p>
-        </div>
-        <div className="atelier-fallback" aria-hidden="true">
-          <i className="atelier-pedestal"/>
-          <i className="atelier-bottle atelier-bottle--a"/>
-          <i className="atelier-bottle atelier-bottle--b"/>
-          <i className="atelier-ring"/>
-        </div>
+    <section id="about" className="atelier-v3 section-pad atelier-v3--fallback">
+      <div className="atelier-v3__head">
+        <span className="eyebrow">The atelier</span>
+        <h2>OBJECTS,<br/><em>LIGHT & TOUCH.</em></h2>
+        <p>The digital space mirrors the salon itself: restrained, tactile and intentionally slow.</p>
+      </div>
+      <div className="atelier-v3__stage atelier-v3__stage--fallback" aria-hidden="true">
+        <i className="atelier-pedestal"/>
+        <i className="atelier-bottle atelier-bottle--a"/>
+        <i className="atelier-bottle atelier-bottle--b"/>
+        <i className="atelier-ring"/>
       </div>
     </section>
   )
